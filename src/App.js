@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Home from "./components/Home";
+import NewPin from "./components/NewPin";
+import PinsList from "./containers/PinsList";
+import { connect } from "react-redux";
+import { getPins } from "./redux/actions/pins";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  componentDidMount() {
+    this.props.getPins();
+  }
+  render() {
+    return (
+      <div className="App">
+        <Router>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/pins" component={PinsList} />
+          <Route path="/pins/new" component={NewPin} />
+        </Router>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default connect(
+  null,
+  { getPins }
+)(App);
