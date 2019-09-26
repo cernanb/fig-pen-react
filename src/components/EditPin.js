@@ -6,8 +6,8 @@ class EditPin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      edition_size: ""
+      name: props.pin.name,
+      edition_size: props.pin.edition_size
     };
   }
   componentDidUpdate(prevProps) {
@@ -26,7 +26,7 @@ class EditPin extends Component {
 
   update = e => {
     e.preventDefault();
-    this.props.updatePin(this.state, this.props.pin.id, this.props.history);
+    this.props.updatePin(this.state, this.props.pin.id, this.props);
   };
   render() {
     return (
