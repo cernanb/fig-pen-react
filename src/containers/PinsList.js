@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class PinsList extends Component {
   render() {
@@ -10,7 +11,9 @@ class PinsList extends Component {
       <div>
         <h1>Pins List</h1>
         {this.props.pins.map(pin => (
-          <p>{pin.name}</p>
+          <p key={pin.id}>
+            <Link to={`/pins/${pin.id}`}>{pin.name}</Link>
+          </p>
         ))}
       </div>
     );
