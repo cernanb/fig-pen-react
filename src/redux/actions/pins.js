@@ -9,7 +9,10 @@ export const getPins = () => {
   return dispatch => {
     return fetch(`http://localhost:3001/pins`)
       .then(res => res.json())
-      .then(pins => dispatch(fetchPins(pins)));
+      .then(pins => {
+        dispatch(fetchPins(pins));
+        dispatch({ type: "TOGGLE_LOADING" });
+      });
   };
 };
 

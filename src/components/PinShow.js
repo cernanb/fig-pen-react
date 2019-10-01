@@ -16,9 +16,14 @@ class PinShow extends Component {
     this.props.deletePin(this.props.pin.id, this.props.history);
   };
   render() {
-    const { pin } = this.props;
-    if (!pin) {
+    const { pin, loading } = this.props;
+    console.log(pin, loading);
+    if (loading && !pin) {
       return <p>Loading...</p>;
+    }
+
+    if (!loading && !pin) {
+      return <p>Pin not found</p>;
     }
     return (
       <div>
@@ -38,12 +43,10 @@ class PinShow extends Component {
 
 const mapStateToProps = (state, props) => {
   const id = props.match.params.id;
-  const pin = state.filter(pin => pin.id == id)[0];
-  if (!pin) {
-    props.history.push("/pins");
-  }
+  const pin = state.all.filter(pin => pin.id == id)[0];
   return {
-    pin
+    pin,
+    loading: state.loading
   };
 };
 

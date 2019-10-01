@@ -22,7 +22,7 @@ class PinsList extends Component {
 
 const mapStateToProps = state => {
   return {
-    pins: state
+    pins: state.all
   };
 };
 
