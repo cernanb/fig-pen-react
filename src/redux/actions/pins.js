@@ -7,7 +7,7 @@ const fetchPins = pins => {
 
 export const getPins = () => {
   return dispatch => {
-    return fetch(`http://localhost:3001/pins`)
+    return fetch(`https://cryptic-beyond-25854.herokuapp.com/pins`)
       .then(res => res.json())
       .then(pins => {
         dispatch(fetchPins(pins));
@@ -26,7 +26,7 @@ export const searchPins = keyword => {
 export const createPin = pinObject => {
   const pinToCreate = { pin: pinObject };
   return dispatch => {
-    fetch(`http://localhost:3001/pins`, {
+    fetch(`https://cryptic-beyond-25854.herokuapp.com/pins`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -46,7 +46,7 @@ export const createPin = pinObject => {
 
 export const deletePin = (id, history) => {
   return dispatch => {
-    fetch(`http://localhost:3001/pins/${id}`, {
+    fetch(`https://cryptic-beyond-25854.herokuapp.com/pins/${id}`, {
       method: "DELETE"
     })
       .then(res => res.json())
@@ -61,7 +61,7 @@ export const updatePin = (pinObject, id, history) => {
   const pinToUpdate = { pin: pinObject };
 
   return dispatch => {
-    return fetch(`http://localhost:3001/pins/${id}`, {
+    return fetch(`https://cryptic-beyond-25854.herokuapp.com/pins/${id}`, {
       method: "PATCH",
       headers: {
         Accept: "application/json",
