@@ -77,7 +77,10 @@ const PinsList = ({ pins, searchedPins, searchPins }) => {
                       height={130}
                       width={100}
                       alt="Remy Sharp"
-                      src={"http://localhost:3001" + pin.photo_url}
+                      src={
+                        `${https://cryptic-beyond-25854.herokuapp.com}/
+                        ${pin.photo_url}`
+                      }
                     />
                   </Link>
                 </ListItemAvatar>
