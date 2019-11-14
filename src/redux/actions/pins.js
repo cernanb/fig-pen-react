@@ -16,6 +16,13 @@ export const getPins = () => {
   };
 };
 
+export const searchPins = keyword => {
+  return {
+    type: "SEARCH_PINS",
+    keyword
+  };
+};
+
 export const createPin = pinObject => {
   const pinToCreate = { pin: pinObject };
   return dispatch => {

@@ -1,4 +1,7 @@
-export default (state = { loading: true, all: [] }, action) => {
+export default (
+  state = { loading: true, all: [], searchedPins: [] },
+  action
+) => {
   switch (action.type) {
     case "FETCH_PINS_SUCCESS":
       return { ...state, all: action.pins };
@@ -10,6 +13,15 @@ export default (state = { loading: true, all: [] }, action) => {
       return {
         ...state,
         pins: state.all.filter(pin => pin.id !== action.payload)
+      };
+    case "SEARCH_PINS":
+      return {
+        ...state,
+        searchedPins: state.all.filter(
+          p =>
+            p.name.toLowerCase().indexOf(action.keyword) !== -1 ||
+            (p.line && p.line.name.toLowerCase().indexOf(action.keyword) !== -1)
+        )
       };
     case "UPDATE_PIN_SUCCESS":
       return {
