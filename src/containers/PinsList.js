@@ -71,13 +71,17 @@ const PinsList = ({ pins, searchedPins, searchPins }) => {
           {pinsToDisplay.map(pin => (
             <>
               <ListItem alignItems="center">
-                <ListItemAvatar>
+                <ListItemAvatar style={{ marginRight: "3rem" }}>
                   <Link to={`/pins/${pin.id}`}>
                     <img
                       height={130}
                       width={100}
                       alt="Remy Sharp"
-                      src={`https://cryptic-beyond-25854.herokuapp.com${pin.photo_url}`}
+                      src={
+                        pin.photo_url
+                          ? `https://cryptic-beyond-25854.herokuapp.com${pin.photo_url}`
+                          : "https://via.placeholder.com/520x720"
+                      }
                     />
                   </Link>
                 </ListItemAvatar>
