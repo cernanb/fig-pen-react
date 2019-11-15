@@ -16,6 +16,12 @@ export const getPins = () => {
   };
 };
 
+export const clearSearch = () => {
+  return {
+    type: "CLEAR_SEARCH"
+  };
+};
+
 export const searchPins = keyword => {
   return {
     type: "SEARCH_PINS",

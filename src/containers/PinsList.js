@@ -1,6 +1,6 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { searchPins } from "../redux/actions/pins";
+import { searchPins, clearSearch } from "../redux/actions/pins";
 import { useSpring, animated } from "react-spring";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -30,7 +30,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const PinsList = ({ pins, searchedPins, searchPins }) => {
+const PinsList = ({ pins, searchedPins, searchPins, clearSearch }) => {
+  useEffect(() => {
+    clearSearch();
+  }, [clearSearch]);
   const classes = useStyles();
   const props = useSpring({
     config: { duration: 500 },
@@ -41,6 +44,7 @@ const PinsList = ({ pins, searchedPins, searchPins }) => {
   if (pins.length === 0) {
     return <p>Loading...</p>;
   }
+
   const pinsToDisplay =
     searchedPins.length === 0 && search === "" ? pins : searchedPins;
   return (
@@ -133,4 +137,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { searchPins })(PinsList);
+export default connect(mapStateToProps, { searchPins, clearSearch })(PinsList);

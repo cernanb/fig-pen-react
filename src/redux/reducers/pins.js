@@ -14,6 +14,11 @@ export default (
         ...state,
         pins: state.all.filter(pin => pin.id !== action.payload)
       };
+    case "CLEAR_SEARCH":
+      return {
+        ...state,
+        searchedPins: []
+      };
     case "SEARCH_PINS":
       return {
         ...state,
