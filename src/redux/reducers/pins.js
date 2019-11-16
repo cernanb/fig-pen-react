@@ -22,11 +22,31 @@ export default (
     case "SEARCH_PINS":
       return {
         ...state,
-        searchedPins: state.all.filter(
-          p =>
+        searchedPins: state.all.filter(p => {
+          return (
             p.name.toLowerCase().indexOf(action.keyword) !== -1 ||
-            (p.line && p.line.name.toLowerCase().indexOf(action.keyword) !== -1)
-        )
+            (p.line &&
+              p.line.name.toLowerCase().indexOf(action.keyword) !== -1) ||
+            (p.pin_releases.length > 0 &&
+              p.pin_releases
+                .filter(pr => pr.event)
+                .map(pr => {
+                  return pr.event.name;
+                })
+                .join()
+                .toLowerCase()
+                .indexOf(action.keyword) !== -1) ||
+            (p.pin_releases.length > 0 &&
+              p.pin_releases
+                .filter(pr => pr.retailer)
+                .map(pr => {
+                  return pr.retailer.name;
+                })
+                .join()
+                .toLowerCase()
+                .indexOf(action.keyword) !== -1)
+          );
+        })
       };
     case "UPDATE_PIN_SUCCESS":
       return {

@@ -90,6 +90,38 @@ const PinShow = ({ deletePin, pin, loading, addPin }) => {
                   <ListItem>
                     <ListItemText
                       primary={`Edition: ${pr.edition} - Volume Size: ${pr.volume_size}`}
+                      secondary={
+                        <React.Fragment>
+                          {pr.retailer && (
+                            <>
+                              <Typography
+                                component="span"
+                                variant="body2"
+                                className={classes.inline}
+                                color="textPrimary"
+                              >
+                                Exclusive Retailer
+                              </Typography>
+                              : FiGPiN
+                              <br />
+                            </>
+                          )}
+                          {pr.event && (
+                            <>
+                              <Typography
+                                component="span"
+                                variant="body2"
+                                className={classes.inline}
+                                color="textPrimary"
+                              >
+                                Event
+                              </Typography>
+                              {": 2017 San Diego Comic Con"}
+                            </>
+                          )}
+                          <hr />
+                        </React.Fragment>
+                      }
                     />
                   </ListItem>
                 ))}
