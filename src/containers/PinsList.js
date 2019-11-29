@@ -8,6 +8,10 @@ import { Link } from "react-router-dom";
 import List from "@material-ui/core/List";
 import Container from "@material-ui/core/Container";
 import ListItem from "@material-ui/core/ListItem";
+import Checkbox from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
+import FormGroup from "@material-ui/core/FormGroup";
 import TextField from "@material-ui/core/TextField";
 import Divider from "@material-ui/core/Divider";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -67,8 +71,31 @@ const PinsList = ({ pins, searchedPins, searchPins, clearSearch }) => {
               setSearch(e.target.value);
               searchPins(e.target.value);
             }}
-            variant="filled"
           />
+          <FormControl component="fieldset">
+            <FormGroup>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    value={"exclusive"}
+                    color="default"
+                    onChange={() => console.log("hello")}
+                  />
+                }
+                label={"Exclusive"}
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    value={"exclusive"}
+                    color="default"
+                    onChange={() => console.log("hello")}
+                  />
+                }
+                label={"Exclusive"}
+              />
+            </FormGroup>
+          </FormControl>
           {search !== "" && searchedPins.length === 0 && (
             <h1>No Search Results</h1>
           )}
@@ -80,7 +107,7 @@ const PinsList = ({ pins, searchedPins, searchPins, clearSearch }) => {
                     <img
                       height={130}
                       width={100}
-                      alt="Remy Sharp"
+                      alt={pin.name}
                       src={
                         pin.photo_url
                           ? `https://cryptic-beyond-25854.herokuapp.com${pin.photo_url}`

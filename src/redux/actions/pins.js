@@ -7,7 +7,11 @@ const fetchPins = pins => {
 
 export const getPins = () => {
   return dispatch => {
-    return fetch(`https://cryptic-beyond-25854.herokuapp.com/pins`)
+    const url =
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3001"
+        : "https://cryptic-beyond-25854.herokuapp.com";
+    return fetch(`${url}/pins`)
       .then(res => res.json())
       .then(pins => {
         dispatch(fetchPins(pins));

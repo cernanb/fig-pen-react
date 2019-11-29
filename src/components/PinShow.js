@@ -61,7 +61,11 @@ const PinShow = ({ deletePin, pin, loading, addPin }) => {
                 height={400}
                 width={300}
                 alt={`${pin.name} pic`}
-                src={`https://cryptic-beyond-25854.herokuapp.com${pin.photo_url}`}
+                src={`${
+                  process.env.NODE_ENV === "development"
+                    ? "http://localhost:3001"
+                    : "https://cryptic-beyond-25854.herokuapp.com"
+                }/${pin.photo_url}`}
               />
             </div>
             <Button
