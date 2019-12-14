@@ -110,7 +110,9 @@ const PinsList = ({ pins, searchedPins, searchPins, clearSearch }) => {
                       alt={pin.name}
                       src={
                         pin.photo_url
-                          ? `https://cryptic-beyond-25854.herokuapp.com${pin.photo_url}`
+                          ? process.env.NODE_ENV === "development"
+                            ? `http://localhost:3001${pin.photo_url}`
+                            : `https://cryptic-beyond-25854.herokuapp.com${pin.photo_url}`
                           : "https://via.placeholder.com/520x720"
                       }
                     />
