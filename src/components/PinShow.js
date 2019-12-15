@@ -106,7 +106,7 @@ const PinShow = ({ deletePin, pin, loading, addPin }) => {
                               >
                                 Exclusive Retailer
                               </Typography>
-                              : FiGPiN
+                              : {pr.retailer.name}
                               <br />
                             </>
                           )}
@@ -120,7 +120,7 @@ const PinShow = ({ deletePin, pin, loading, addPin }) => {
                               >
                                 Event
                               </Typography>
-                              {": 2017 San Diego Comic Con"}
+                              {`: ${pr.event.name}`}
                             </>
                           )}
                           <hr />
