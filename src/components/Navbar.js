@@ -36,19 +36,6 @@ const Navbar = () => {
   };
   return (
     <div className={classes.root}>
-      {/* <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/pins/new">Create a Pin</Link>
-          </li>
-          <li>
-            <Link to="/pins">My Pins</Link>
-          </li>
-        </ul>
-      </nav> */}
       <AppBar position="static" color="black">
         <Toolbar>
           <IconButton
@@ -72,6 +59,12 @@ const Navbar = () => {
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <MenuItem onClick={handleClose}>Catalog</MenuItem>
+            </Link>
+            <Link
+              to="/pins/exclusive"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <MenuItem onClick={handleClose}>Exclusive Pins</MenuItem>
             </Link>
             <Link
               to="/collection"
