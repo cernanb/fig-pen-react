@@ -53,7 +53,7 @@ const Navbar = () => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            {/* <MenuItem onClick={handleClose}>Profile</MenuItem> */}
             <Link
               to="/catalog"
               style={{ textDecoration: "none", color: "inherit" }}
@@ -66,18 +66,18 @@ const Navbar = () => {
             >
               <MenuItem onClick={handleClose}>Exclusive Pins</MenuItem>
             </Link>
-            <Link
+            {/* <Link
               to="/collection"
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <MenuItem onClick={handleClose}>My Collection</MenuItem>
-            </Link>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
+            </Link> */}
+            {/* <MenuItem onClick={handleClose}>Logout</MenuItem> */}
           </Menu>
           <Typography variant="h6" className={classes.title}>
-            FigCatalog
+            Figpin
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit">Welcome</Button>
         </Toolbar>
       </AppBar>
     </div>
