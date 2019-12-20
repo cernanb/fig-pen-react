@@ -52,7 +52,7 @@ const PinsList = ({ pinsToDisplay }) => {
                         pin.photo_url
                           ? process.env.NODE_ENV === "development"
                             ? `http://localhost:3001${pin.photo_url}`
-                            : `https://cryptic-beyond-25854.herokuapp.com${pin.photo_url}`
+                            : `https://figpin-rails-api.herokuapp.com${pin.photo_url}`
                           : "https://via.placeholder.com/520x720"
                       }
                     />

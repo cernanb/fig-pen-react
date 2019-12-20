@@ -64,7 +64,7 @@ const PinShow = ({ deletePin, pin, loading, addPin }) => {
                 src={`${
                   process.env.NODE_ENV === "development"
                     ? "http://localhost:3001"
-                    : "https://cryptic-beyond-25854.herokuapp.com"
+                    : "https://figpin-rails-api.herokuapp.com"
                 }/${pin.photo_url}`}
               />
             </div>

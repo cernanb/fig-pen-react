@@ -10,7 +10,7 @@ export const getPins = () => {
     const url =
       process.env.NODE_ENV === "development"
         ? "http://localhost:3001"
-        : "https://cryptic-beyond-25854.herokuapp.com";
+        : "https://figpin-rails-api.herokuapp.com";
     return fetch(`${url}/pins`)
       .then(res => res.json())
       .then(pins => {
@@ -36,7 +36,7 @@ export const searchPins = keyword => {
 export const createPin = pinObject => {
   const pinToCreate = { pin: pinObject };
   return dispatch => {
-    fetch(`https://cryptic-beyond-25854.herokuapp.com/pins`, {
+    fetch(`https://figpin-rails-api.herokuapp.com/pins`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -56,7 +56,7 @@ export const createPin = pinObject => {
 
 export const deletePin = (id, history) => {
   return dispatch => {
-    fetch(`https://cryptic-beyond-25854.herokuapp.com/pins/${id}`, {
+    fetch(`https://figpin-rails-api.herokuapp.com/pins/${id}`, {
       method: "DELETE"
     })
       .then(res => res.json())
@@ -71,7 +71,7 @@ export const updatePin = (pinObject, id, history) => {
   const pinToUpdate = { pin: pinObject };
 
   return dispatch => {
-    return fetch(`https://cryptic-beyond-25854.herokuapp.com/pins/${id}`, {
+    return fetch(`https://figpin-rails-api.herokuapp.com/pins/${id}`, {
       method: "PATCH",
       headers: {
         Accept: "application/json",
