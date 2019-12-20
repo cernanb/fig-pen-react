@@ -37,60 +37,60 @@ const PinsList = ({ pinsToDisplay }) => {
   return (
     <List className={classes.root}>
       <Container>
-        {pinsToDisplay.map(pin => (
-          <>
-            <ListItem alignItems="center">
-              <ListItemAvatar style={{ marginRight: "3rem" }}>
-                <Link to={`/pins/${pin.id}`}>
-                  <img
-                    height={130}
-                    width={100}
-                    alt={pin.name}
-                    src={
-                      pin.photo_url
-                        ? process.env.NODE_ENV === "development"
-                          ? `http://localhost:3001${pin.photo_url}`
-                          : `https://cryptic-beyond-25854.herokuapp.com${pin.photo_url}`
-                        : "https://via.placeholder.com/520x720"
-                    }
-                  />
-                </Link>
-              </ListItemAvatar>
-              <ListItemText
-                primary={
-                  <Link
-                    to={`/pins/${pin.id}`}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <Typography
-                      component="span"
-                      className={classes.inline}
-                      color="textPrimary"
-                    >
-                      {pin.name}
-                    </Typography>
+        {pinsToDisplay
+          .sort((a, b) => a.figpin_id - b.figpin_id)
+          .map(pin => (
+            <>
+              <ListItem alignItems="center">
+                <ListItemAvatar style={{ marginRight: "3rem" }}>
+                  <Link to={`/pins/${pin.id}`}>
+                    <img
+                      height={130}
+                      width={100}
+                      alt={pin.name}
+                      src={
+                        pin.photo_url
+                          ? process.env.NODE_ENV === "development"
+                            ? `http://localhost:3001${pin.photo_url}`
+                            : `https://cryptic-beyond-25854.herokuapp.com${pin.photo_url}`
+                          : "https://via.placeholder.com/520x720"
+                      }
+                    />
                   </Link>
-                }
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      className={classes.inline}
-                      color="textPrimary"
+                </ListItemAvatar>
+                <ListItemText
+                  primary={
+                    <Link
+                      to={`/pins/${pin.id}`}
+                      style={{ textDecoration: "none" }}
                     >
-                      FiGPiN ID:
-                    </Typography>
-                    {" " + pin.figpin_id}
-                    <br />
-                    {pin.line && `Line: ${pin.line.name}`}
-                  </React.Fragment>
-                }
-              />
-            </ListItem>
-            <Divider variant="inset" component="li" />
-          </>
-        ))}
+                      <Typography
+                        variant="h5"
+                        className={classes.inline}
+                        color="textPrimary"
+                      >
+                        {`${pin.name}  (#${pin.figpin_id})`}
+                      </Typography>
+                    </Link>
+                  }
+                  secondary={
+                    <React.Fragment>
+                      <Typography
+                        component="span"
+                        variant="subtitle2"
+                        className={classes.inline}
+                        color="textSecondary"
+                      >
+                        <br />
+                        {pin.line && `${pin.line.name}`}
+                      </Typography>
+                    </React.Fragment>
+                  }
+                />
+              </ListItem>
+              <Divider variant="inset" component="li" />
+            </>
+          ))}
       </Container>
     </List>
   );
